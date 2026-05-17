@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>In-Hand Salary Calculator India 2025 – CTC to Take-Home | RupeeCalc</title>
+<meta name="description" content="Calculate your exact in-hand salary from CTC in India. Includes PF, professional tax, HRA, and all deductions. Updated for 2024-25.">
+<meta name="keywords" content="in hand salary calculator India, CTC to take home salary, salary calculator 2025, PF deduction calculator, net salary India">
+<link rel="canonical" href="https://rupeecalc.in/salary-calculator.html">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is the difference between CTC and in-hand salary?","acceptedAnswer":{"@type":"Answer","text":"CTC (Cost to Company) is the total amount a company spends on an employee including employer PF, gratuity provision, and all allowances. In-hand salary (take-home) is what you actually receive after deducting employee PF, professional tax, and income tax from your gross salary."}},
+{"@type":"Question","name":"How is professional tax calculated in India?","acceptedAnswer":{"@type":"Answer","text":"Professional tax varies by state. In Maharashtra, it is ₹200/month (₹300 in February) for salaries above ₹10,000. In Karnataka it's ₹200/month for salaries above ₹15,000. Some states like Delhi and Haryana don't have professional tax."}}
+]}
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo"><em>₹</em>RupeeCalc</a>
+  <ul class="nav-links">
+    <li><a href="emi-calculator.html">EMI</a></li>
+    <li><a href="sip-calculator.html">SIP</a></li>
+    <li><a href="salary-calculator.html">Salary</a></li>
+    <li><a href="tax-calculator.html">Tax Regime</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap">
+  <a href="index.html" class="back">← All Calculators</a>
+  <h1 class="page-title">In-Hand Salary Calculator</h1>
+  <p class="page-sub">Enter your CTC and get your exact monthly take-home salary with full deduction breakdown.</p>
+
+  <div class="calc-body">
+    <!-- INPUT -->
+    <div class="panel">
+      <div class="panel-title">Salary Details</div>
+
+      <div class="frow">
+        <label>Annual CTC <span id="ctcLabel">₹ 8,00,000</span></label>
+        <div class="iw has-pre"><span class="ipre">₹</span>
+          <input type="number" id="ctc" value="800000" min="100000" oninput="syncRange('ctc','ctcRange',100000,5000000);calc()">
+        </div>
+        <input type="range" id="ctcRange" min="100000" max="3000000" step="50000" value="800000" oninput="syncInput('ctcRange','ctc');calc()">
+      </div>
+
+      <div class="frow">
+        <label>Basic Salary (% of CTC) <span id="basicLabel">40%</span></label>
+        <input type="range" id="basicPct" min="30" max="60" step="5" value="40" oninput="document.getElementById('basicLabel').textContent=this.value+'%';calc()">
+      </div>
+
+      <div class="frow">
+        <label>HRA (% of Basic) <span id="hraLabel">50%</span></label>
+        <input type="range" id="hraPct" min="0" max="60" step="5" value="50" oninput="document.getElementById('hraLabel').textContent=this.value+'%';calc()">
+      </div>
+
+      <div class="frow">
+        <label>City Type</label>
+        <select id="cityType" onchange="calc()">
+          <option value="metro">Metro (Mumbai, Delhi, Kolkata, Chennai)</option>
+          <option value="nonmetro">Non-Metro</option>
+        </select>
+      </div>
+
+      <div class="frow">
+        <label>Employer PF Included in CTC?</label>
+        <select id="pfInCTC" onchange="calc()">
+          <option value="yes">Yes (most private companies)</option>
+          <option value="no">No (PF is extra)</option>
+        </select>
+      </div>
+
+      <div class="frow">
+        <label>State (for Professional Tax)</label>
+        <select id="state" onchange="calc()">
+          <option value="maharashtra">Maharashtra (₹2,500/year)</option>
+          <option value="karnataka">Karnataka (₹2,400/year)</option>
+          <option value="telangana">Telangana / Andhra Pradesh (₹2,400/year)</option>
+          <option value="westbengal">West Bengal (₹2,400/year)</option>
+          <option value="none">Delhi / Haryana / UP (No PT)</option>
+        </select>
+      </div>
+
+      <div class="frow">
+        <label>Annual Bonus / Variable Pay <span id="bonusLabel">₹ 0</span></label>
+        <div class="iw has-pre"><span class="ipre">₹</span>
+          <input type="number" id="bonus" value="0" min="0" oninput="syncRange('bonus','bonusRange',0,2000000);calc()">
+        </div>
+        <input type="range" id="bonusRange" min="0" max="500000" step="10000" value="0" oninput="syncInput('bonusRange','bonus');calc()">
+      </div>
+
+      <button class="btn" onclick="calc()">Calculate Take-Home</button>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="panel">
+      <div class="panel-title">Salary Breakdown</div>
+      <div id="results">
+        <div class="ph"><div class="ph-icon">💼</div>Enter your CTC details to see the breakdown</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SEO CONTENT -->
+<div class="content">
+  <h2>What is the Difference Between CTC and In-Hand Salary?</h2>
+  <p>CTC (Cost to Company) is the total annual expense a company incurs for an employee. It includes your basic salary, HRA, allowances, employer's PF contribution, and sometimes gratuity provision. However, your actual take-home (in-hand) salary is significantly lower because several deductions happen:</p>
+  <p><strong>Deductions from your salary:</strong> Employee PF (12% of basic, capped at ₹1,800/month for basic ≤ ₹15,000 or 12% of actual basic if higher), Professional Tax (state-dependent, typically ₹200/month), and Income Tax (TDS based on your annual taxable income and chosen tax regime).</p>
+  <p>This calculator gives you a simplified view without income tax deductions. For exact TDS, use our <a href="tax-calculator.html" style="color:var(--gold)">Tax Regime Comparator</a> to find your annual tax liability, then divide by 12 to get monthly TDS.</p>
+
+  <h2>How Is PF Calculated?</h2>
+  <p>Employee PF contribution is 12% of your basic salary. However, if your basic salary exceeds ₹15,000/month, both you and your employer can cap contributions at 12% of ₹15,000 = ₹1,800/month each, unless your company follows the higher-salary PF rule.</p>
+
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq">
+    <details>
+      <summary>Why is my actual in-hand salary different from this calculator?</summary>
+      <div class="faq-body">This calculator uses standard assumptions for salary structure. Your actual salary structure depends on your offer letter. Companies vary in how they split CTC into basic, HRA, LTA, food coupons, medical allowance, and special allowances. Check your salary slip for the exact breakdown.</div>
+    </details>
+    <details>
+      <summary>What is Special Allowance and is it taxable?</summary>
+      <div class="faq-body">Special Allowance is the residual amount in your salary after basic, HRA, and other defined allowances. It is fully taxable. Many companies put a large portion of salary under special allowance because it's flexible. In your salary slip, it's the "balancing" component.</div>
+    </details>
+    <details>
+      <summary>Can I opt out of PF if my salary is high?</summary>
+      <div class="faq-body">If you are joining a new organization and your salary is above ₹15,000/month (basic), you can opt out of PF by submitting Form 11. However, this must be done at the time of joining. Once enrolled, you cannot opt out during employment with the same employer.</div>
+    </details>
+    <details>
+      <summary>Is HRA exemption available in the new tax regime?</summary>
+      <div class="faq-body">No. HRA exemption is only available under the old tax regime. Under the new tax regime, HRA is fully taxable as part of your gross salary. This is a major factor to consider when choosing between old and new regime — check our Tax Regime Calculator for the full comparison.</div>
+    </details>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="emi-calculator.html">EMI Calculator</a>
+    <a href="sip-calculator.html">SIP Calculator</a>
+    <a href="tax-calculator.html">Tax Regime</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </div>
+  <p class="footer-copy">© 2025 RupeeCalc · Results are approximate. Consult your HR or a CA for exact figures.</p>
+</footer>
+
+<script>
+const PT = { maharashtra: 2500, karnataka: 2400, telangana: 2400, westbengal: 2400, none: 0 };
+
+function syncRange(inputId, rangeId, min, max) {
+  const v = parseFloat(document.getElementById(inputId).value);
+  document.getElementById(rangeId).value = Math.min(max, Math.max(min, v));
+  if (inputId === 'ctc') document.getElementById('ctcLabel').textContent = '₹ ' + fmt(v);
+  if (inputId === 'bonus') document.getElementById('bonusLabel').textContent = '₹ ' + fmt(v);
+}
+
+function syncInput(rangeId, inputId) {
+  const v = document.getElementById(rangeId).value;
+  document.getElementById(inputId).value = v;
+  if (inputId === 'ctc') document.getElementById('ctcLabel').textContent = '₹ ' + fmt(v);
+  if (inputId === 'bonus') document.getElementById('bonusLabel').textContent = '₹ ' + fmt(v);
+}
+
+function fmt(n) {
+  return parseFloat(n).toLocaleString('en-IN', { maximumFractionDigits: 0 });
+}
+
+function calc() {
+  const ctc = parseFloat(document.getElementById('ctc').value) || 0;
+  const bonus = parseFloat(document.getElementById('bonus').value) || 0;
+  const basicPct = parseFloat(document.getElementById('basicPct').value) / 100;
+  const hraPct = parseFloat(document.getElementById('hraPct').value) / 100;
+  const pfInCTC = document.getElementById('pfInCTC').value;
+  const state = document.getElementById('state').value;
+
+  if (ctc <= 0) return;
+
+  // Annual calculations
+  const annualBasic = ctc * basicPct;
+  const monthlyBasic = annualBasic / 12;
+  const annualHRA = annualBasic * hraPct;
+
+  // Employer PF
+  const empPfBase = Math.min(monthlyBasic, 15000);
+  const annualEmployerPF = empPfBase * 0.12 * 12;
+  const annualEmployeePF = empPfBase * 0.12 * 12;
+
+  // Gross salary (excluding employer PF if it's part of CTC)
+  let fixedCtc = ctc;
+  if (pfInCTC === 'yes') {
+    fixedCtc = ctc - annualEmployerPF;
+  }
+
+  // Remaining allowances
+  const annualSpecialAllowance = fixedCtc - annualBasic - annualHRA;
+  const grossAnnual = annualBasic + annualHRA + Math.max(0, annualSpecialAllowance) + bonus;
+
+  // Professional tax
+  const annualPT = PT[state] || 0;
+
+  // Net = Gross - Employee PF - PT
+  const annualNet = grossAnnual - annualEmployeePF - annualPT;
+
+  const monthlyGross = grossAnnual / 12;
+  const monthlyNet = annualNet / 12;
+  const monthlyDeductions = (annualEmployeePF + annualPT) / 12;
+
+  document.getElementById('results').innerHTML = `
+    <div class="rg">
+      <div class="rb accent full">
+        <div class="rl-">Monthly In-Hand Salary</div>
+        <div class="rv">₹ ${fmt(monthlyNet)}</div>
+      </div>
+      <div class="rb">
+        <div class="rl-">Monthly Gross</div>
+        <div class="rv">₹ ${fmt(monthlyGross)}</div>
+      </div>
+      <div class="rb">
+        <div class="rl-">Monthly Deductions*</div>
+        <div class="rv" style="color:var(--red)">₹ ${fmt(monthlyDeductions)}</div>
+      </div>
+    </div>
+
+    <div class="panel-title" style="margin-top:1.2rem">Full Annual Breakdown</div>
+    <div class="breakdown">
+      <div class="bkrow"><span class="bklabel">Annual CTC</span><span class="bkval">₹ ${fmt(ctc)}</span></div>
+      <div class="bkrow"><span class="bklabel">Basic Salary</span><span class="bkval">₹ ${fmt(annualBasic)}</span></div>
+      <div class="bkrow"><span class="bklabel">HRA</span><span class="bkval">₹ ${fmt(annualHRA)}</span></div>
+      <div class="bkrow"><span class="bklabel">Special Allowance</span><span class="bkval">₹ ${fmt(Math.max(0, annualSpecialAllowance))}</span></div>
+      ${bonus > 0 ? `<div class="bkrow"><span class="bklabel">Bonus / Variable Pay</span><span class="bkval">₹ ${fmt(bonus)}</span></div>` : ''}
+      <div class="bkrow"><span class="bklabel">Gross Annual Salary</span><span class="bkval" style="font-weight:700">₹ ${fmt(grossAnnual)}</span></div>
+      <div class="bkrow deduct"><span class="bklabel">− Employee PF (12% of Basic)</span><span class="bkval neg">₹ ${fmt(annualEmployeePF)}</span></div>
+      ${annualPT > 0 ? `<div class="bkrow deduct"><span class="bklabel">− Professional Tax</span><span class="bkval neg">₹ ${fmt(annualPT)}</span></div>` : ''}
+      <div class="bkrow deduct"><span class="bklabel">− Income Tax (TDS)*</span><span class="bkval neg" style="color:var(--muted)">Use Tax Regime Calculator</span></div>
+      <div class="bkrow total"><span class="bklabel">Annual Take-Home (pre-tax)</span><span class="bkval">₹ ${fmt(annualNet)}</span></div>
+    </div>
+    <p style="font-size:.75rem;color:var(--muted);margin-top:.8rem">* Income tax (TDS) not included. Use the <a href="tax-calculator.html" style="color:var(--gold)">Tax Regime Calculator</a> to calculate your TDS.</p>
+  `;
+}
+
+// Init
+calc();
+</script>
+</body>
+</html>
